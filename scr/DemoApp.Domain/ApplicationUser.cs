@@ -1,6 +1,6 @@
 ﻿namespace DemoApp.Domain;
 
-public class Class1
+public class ApplicationUser
 {
-
+    
 }
