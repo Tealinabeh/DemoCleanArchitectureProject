@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DemoBookApp.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+139ceef3c4ad27a2c6128a6a3c1900173c7aa6a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02ae1a6f7ce48b00bd6c9cca0c0a683f94ef818f")]
 [assembly: System.Reflection.AssemblyProductAttribute("DemoBookApp.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DemoBookApp.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

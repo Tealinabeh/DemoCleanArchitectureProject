@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ilamo\\Desktop\\CleanArcitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj": {}
+    "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ilamo\\Desktop\\CleanArcitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj": {
+    "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ilamo\\Desktop\\CleanArcitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj",
         "projectName": "DemoBookApp.Contracts",
-        "projectPath": "C:\\Users\\ilamo\\Desktop\\CleanArcitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj",
+        "projectPath": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj",
         "packagesPath": "C:\\Users\\ilamo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ilamo\\Desktop\\CleanArcitecture\\src\\DemoBookApp.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ilamo\\AppData\\Roaming\\NuGet\\NuGet.Config"

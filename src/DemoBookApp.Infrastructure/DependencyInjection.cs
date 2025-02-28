@@ -14,10 +14,10 @@ public static class DependencyInjection
         return service;
     }
 
-    public static IServiceCollection AddPersistence(this IServiceCollection service, IConfiguration configurations)
+    private static IServiceCollection AddPersistence(this IServiceCollection service, IConfiguration configurations)
     {
         service.AddDbContext<ApplicationDBContext>(options =>{
-            options.UseSqlite(configurations.GetConnectionString(nameof(ApplicationDBContext)));
+            options.UseSqlite("Data Source=CleanArchitecture.sqlite");
         });
         return service;
     }

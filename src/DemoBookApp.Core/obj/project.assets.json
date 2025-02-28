@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ilamo\\Desktop\\CleanArcitecture\\src\\DemoBookApp.Core\\DemoBookApp.Core.csproj",
+      "projectUniqueName": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Core\\DemoBookApp.Core.csproj",
       "projectName": "DemoBookApp.Core",
-      "projectPath": "C:\\Users\\ilamo\\Desktop\\CleanArcitecture\\src\\DemoBookApp.Core\\DemoBookApp.Core.csproj",
+      "projectPath": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Core\\DemoBookApp.Core.csproj",
       "packagesPath": "C:\\Users\\ilamo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ilamo\\Desktop\\CleanArcitecture\\src\\DemoBookApp.Core\\obj\\",
+      "outputPath": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ilamo\\AppData\\Roaming\\NuGet\\NuGet.Config"

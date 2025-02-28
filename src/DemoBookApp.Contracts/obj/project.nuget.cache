@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FnYw4btFU3U=",
+  "dgSpecHash": "/q6tujPmUMM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ilamo\\Desktop\\CleanArcitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj",
+  "projectFilePath": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

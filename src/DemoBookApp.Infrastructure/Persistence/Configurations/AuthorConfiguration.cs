@@ -7,7 +7,8 @@ namespace DemoBookApp.Infrastructure.Persistence.Configurations
 {
     public class AuthorConfiguration : IEntityTypeConfiguration<Author>
     {
-        public void Configure(EntityTypeBuilder<Author> builder){
+        public void Configure(EntityTypeBuilder<Author> builder)
+        {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name);
             builder.Property(x => x.Surname);
