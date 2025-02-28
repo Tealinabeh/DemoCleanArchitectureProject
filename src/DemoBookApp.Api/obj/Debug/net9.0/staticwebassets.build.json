@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "fqp1Uq0MqLpPP7gqFrLuQ4RDyc4PTlkPScV08lr1lcI=",
+  "Source": "DemoBookApp.Api",
+  "BasePath": "_content/DemoBookApp.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

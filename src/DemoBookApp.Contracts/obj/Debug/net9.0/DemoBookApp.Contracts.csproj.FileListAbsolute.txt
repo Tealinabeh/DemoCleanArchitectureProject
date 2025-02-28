@@ -1,0 +1,11 @@
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Contracts\bin\Debug\net9.0\DemoBookApp.Contracts.deps.json
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Contracts\bin\Debug\net9.0\DemoBookApp.Contracts.dll
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Contracts\bin\Debug\net9.0\DemoBookApp.Contracts.pdb
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Contracts\obj\Debug\net9.0\DemoBookApp.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Contracts\obj\Debug\net9.0\DemoBookApp.Contracts.AssemblyInfoInputs.cache
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Contracts\obj\Debug\net9.0\DemoBookApp.Contracts.AssemblyInfo.cs
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Contracts\obj\Debug\net9.0\DemoBookApp.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Contracts\obj\Debug\net9.0\DemoBookApp.Contracts.dll
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Contracts\obj\Debug\net9.0\refint\DemoBookApp.Contracts.dll
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Contracts\obj\Debug\net9.0\DemoBookApp.Contracts.pdb
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Contracts\obj\Debug\net9.0\ref\DemoBookApp.Contracts.dll

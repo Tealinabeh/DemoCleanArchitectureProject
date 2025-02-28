@@ -1,0 +1,11 @@
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\bin\Debug\net9.0\DemoBookApp.Core.deps.json
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\bin\Debug\net9.0\DemoBookApp.Core.dll
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\bin\Debug\net9.0\DemoBookApp.Core.pdb
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\DemoBookApp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\DemoBookApp.Core.AssemblyInfoInputs.cache
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\DemoBookApp.Core.AssemblyInfo.cs
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\DemoBookApp.Core.csproj.CoreCompileInputs.cache
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\DemoBookApp.Core.dll
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\refint\DemoBookApp.Core.dll
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\DemoBookApp.Core.pdb
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\ref\DemoBookApp.Core.dll
