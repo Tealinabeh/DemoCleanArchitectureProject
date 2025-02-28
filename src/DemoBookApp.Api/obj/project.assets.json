@@ -1131,6 +1131,9 @@
       "DemoBookApp.Contracts/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "DemoBookApp.Core": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/DemoBookApp.Contracts.dll": {}
         },
@@ -1153,7 +1156,6 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "DemoBookApp.Contracts": "1.0.0",
-          "DemoBookApp.Core": "1.0.0",
           "Microsoft.EntityFrameworkCore": "9.0.2",
           "Microsoft.EntityFrameworkCore.Design": "9.0.2",
           "Microsoft.EntityFrameworkCore.Sqlite": "9.0.2",

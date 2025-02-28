@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "DemoBookApp.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/DemoBookApp.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DemoBookApp.Core.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "DemoBookApp.Core/1.0.0": {
+      "type": "project",
+      "path": "../DemoBookApp.Core/DemoBookApp.Core.csproj",
+      "msbuildProject": "../DemoBookApp.Core/DemoBookApp.Core.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "DemoBookApp.Core >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\ilamo\\.nuget\\packages\\": {}
@@ -31,7 +50,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Core\\DemoBookApp.Core.csproj": {
+              "projectPath": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Core\\DemoBookApp.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

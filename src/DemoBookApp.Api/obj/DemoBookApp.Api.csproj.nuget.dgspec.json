@@ -169,7 +169,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Core\\DemoBookApp.Core.csproj": {
+                "projectPath": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Core\\DemoBookApp.Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -290,9 +294,6 @@
             "projectReferences": {
               "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj": {
                 "projectPath": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Contracts\\DemoBookApp.Contracts.csproj"
-              },
-              "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Core\\DemoBookApp.Core.csproj": {
-                "projectPath": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Core\\DemoBookApp.Core.csproj"
               }
             }
           }
