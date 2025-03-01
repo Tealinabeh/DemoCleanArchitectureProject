@@ -28,7 +28,8 @@ namespace DemoBookApp.Infrastructure.Repositories
 
         public async Task<Book?> GetByIdAsync(long id, CancellationToken token)
         {
-            return await Books.AsNoTracking().FirstOrDefaultAsync(b => b.Id == id, token);
+            return await Books.AsNoTracking()
+                                .FirstOrDefaultAsync(b => b.Id == id, token);
         }
     }
 }
