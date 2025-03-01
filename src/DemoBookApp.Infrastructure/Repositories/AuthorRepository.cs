@@ -18,7 +18,7 @@ namespace DemoBookApp.Infrastructure
 
         public async Task<List<Author>> GetAsync(AuthorQuery authorQuery, CancellationToken cancellationToken)
         {
-            var result = Authors.AsNoTracking();
+            var result = Authors.AsQueryable();
 
             if(!string.IsNullOrEmpty(authorQuery.Name)) 
                 result.Where(a => a.Name == authorQuery.Name);
@@ -28,7 +28,7 @@ namespace DemoBookApp.Infrastructure
 
                 return await result.ToListAsync(cancellationToken);
         }
-
+    
         public async Task<Author?> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
             return await Authors.AsNoTracking()

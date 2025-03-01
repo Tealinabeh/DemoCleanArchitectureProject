@@ -9,6 +9,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddInfrastructure(builder.Configuration)
                 .AddApplication();
 
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
 
@@ -19,5 +21,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
+app.MapControllers();
 
 app.Run();
