@@ -1,5 +1,6 @@
 using DemoBookApp.Contracts;
 using DemoBookApp.Core;
+using DemoBookApp.Infrastructure.Extensions;
 using DemoBookApp.Infrastructure.Interfaces;
 using DemoBookApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -16,19 +17,15 @@ namespace DemoBookApp.Infrastructure
             _dbContext = context;
         }
 
-        public async Task<List<Author>> GetAsync(AuthorQuery authorQuery, CancellationToken cancellationToken)
+        public async Task<List<Author>> GetAsync(AuthorQuery query, CancellationToken cancellationToken)
         {
             var result = Authors.AsQueryable();
 
-            if(!string.IsNullOrEmpty(authorQuery.Name)) 
-                result.Where(a => a.Name == authorQuery.Name);
+            result.SortByQuery(query);
 
-            if(!string.IsNullOrEmpty(authorQuery.Surname)) 
-                result.Where(a => a.Name == authorQuery.Surname); 
-
-                return await result.ToListAsync(cancellationToken);
+            return await result.ToListAsync(cancellationToken);
         }
-    
+
         public async Task<Author?> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
             return await Authors.AsNoTracking()
