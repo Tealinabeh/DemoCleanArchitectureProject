@@ -1,5 +1,6 @@
 using DemoBookApp.Application.Decorators;
 using DemoBookApp.Contracts;
+using DemoBookApp.Contracts.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemoBookApp.Api.Controllers
@@ -21,7 +22,7 @@ namespace DemoBookApp.Api.Controllers
             if (result is null)
                 return NotFound();
 
-            return Ok(result);
+            return Ok(result.Select(a => a.ToGetResponse()));
         }
     }
 }
