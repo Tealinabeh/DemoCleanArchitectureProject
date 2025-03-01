@@ -7,6 +7,6 @@ namespace DemoBookApp.Infrastructure.Interfaces
     {
         public Task<List<Author>> GetAsync(AuthorQuery authorQuery, CancellationToken cancellationToken);
         public Task<Author?> GetByIdAsync(long id, CancellationToken cancellationToken);
-        
+  
     }
 }
