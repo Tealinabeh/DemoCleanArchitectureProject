@@ -1,5 +1,6 @@
 using DemoBookApp.Contracts;
 using DemoBookApp.Core;
+using DemoBookApp.Infrastructure.Extensions;
 using DemoBookApp.Infrastructure.Interfaces;
 using DemoBookApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -15,15 +16,19 @@ namespace DemoBookApp.Infrastructure.Repositories
         {
             _dbContext = context;
         }
-        
-        public Task<List<Book>> GetAsync(BookQuery query, CancellationToken token)
+
+        public async Task<List<Book>> GetAsync(BookQuery query, CancellationToken token)
         {
-            throw new NotImplementedException();
+            var result = Books.AsQueryable();
+
+            result.ResolveQuery(query);
+
+            return await result.ToListAsync(token);
         }
 
-        public Task<Book?> GetByIdAsync(long id, CancellationToken token)
+        public async Task<Book?> GetByIdAsync(long id, CancellationToken token)
         {
-            throw new NotImplementedException();
+            return await Books.AsNoTracking().FirstOrDefaultAsync(b => b.Id == id, token);
         }
     }
 }

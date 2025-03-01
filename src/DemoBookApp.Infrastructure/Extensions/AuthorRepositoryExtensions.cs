@@ -7,13 +7,13 @@ namespace DemoBookApp.Infrastructure.Extensions
     {
         public static IQueryable<Author> ResolveQuery(this IQueryable<Author> queryable, AuthorQuery query)
         {
-            if (!string.IsNullOrEmpty(query.Name))
+            if (!string.IsNullOrWhiteSpace(query.Name))
                 queryable.Where(a => a.Name == query.Name);
 
-            if (!string.IsNullOrEmpty(query.Surname))
+            if (!string.IsNullOrWhiteSpace(query.Surname))
                 queryable.Where(a => a.Name == query.Surname);
 
-            if (!string.IsNullOrEmpty(query.SortBy))
+            if (!string.IsNullOrWhiteSpace(query.SortBy))
                 queryable.ResolveSortBy(query);
                 
             var skipNumber = (query.PageNumber - 1) * query.PageSize;
@@ -35,7 +35,7 @@ namespace DemoBookApp.Infrastructure.Extensions
                         queryable.OrderBy(a => a.Surname);
                         break;
                     default:
-                        return queryable.Select(a => a);
+                        return queryable;
                 }
             }
             switch (query.SortBy.ToLower())
@@ -47,9 +47,9 @@ namespace DemoBookApp.Infrastructure.Extensions
                     queryable.OrderByDescending(a => a.Surname);
                     break;
                 default:
-                    return queryable.Select(a => a);
+                    return queryable;
             }
-            return queryable.Select(a => a);
+            return queryable;
         }
     }
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
