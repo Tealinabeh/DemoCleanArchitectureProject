@@ -5,7 +5,7 @@ namespace DemoBookApp.Infrastructure.Extensions
 {
     public static class AuthorRepositoryExtensions
     {
-        public static IQueryable<Author> SortByQuery(this IQueryable<Author> queryable, AuthorQuery query)
+        public static IQueryable<Author> ResolveQuery(this IQueryable<Author> queryable, AuthorQuery query)
         {
             if (!string.IsNullOrEmpty(query.Name))
                 queryable.Where(a => a.Name == query.Name);

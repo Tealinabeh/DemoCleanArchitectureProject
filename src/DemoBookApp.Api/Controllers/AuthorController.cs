@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DemoBookApp.Application.Decorators;
 using DemoBookApp.Contracts;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +12,7 @@ namespace DemoBookApp.Api.Controllers
         {
             _persistence = persistence;
         }
+        
         [HttpGet]
         public async Task<IActionResult> GetAsync([FromQuery] AuthorQuery query, CancellationToken token)
         {

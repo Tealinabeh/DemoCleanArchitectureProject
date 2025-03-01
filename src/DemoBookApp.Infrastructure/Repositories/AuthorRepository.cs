@@ -21,7 +21,7 @@ namespace DemoBookApp.Infrastructure
         {
             var result = Authors.AsQueryable();
 
-            result.SortByQuery(query);
+            result.ResolveQuery(query);
 
             return await result.ToListAsync(cancellationToken);
         }
