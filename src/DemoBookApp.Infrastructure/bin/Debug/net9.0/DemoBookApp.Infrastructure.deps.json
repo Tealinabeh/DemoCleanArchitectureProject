@@ -9,7 +9,6 @@
       "DemoBookApp.Infrastructure/1.0.0": {
         "dependencies": {
           "DemoBookApp.Contracts": "1.0.0",
-          "DemoBookApp.Core": "1.0.0",
           "Microsoft.EntityFrameworkCore": "9.0.2",
           "Microsoft.EntityFrameworkCore.Design": "9.0.2",
           "Microsoft.EntityFrameworkCore.Sqlite": "9.0.2",
@@ -766,6 +765,9 @@
       "System.Text.Json/9.0.2": {},
       "System.Threading.Channels/7.0.0": {},
       "DemoBookApp.Contracts/1.0.0": {
+        "dependencies": {
+          "DemoBookApp.Core": "1.0.0"
+        },
         "runtime": {
           "DemoBookApp.Contracts.dll": {
             "assemblyVersion": "1.0.0.0",

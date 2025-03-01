@@ -1,12 +1,12 @@
 namespace DemoBookApp.Core;
 
-public record Book
-(
-    Guid Id,
-    string Title,
-    string? Description,
-    decimal Price,
-    DateOnly DateOfIssue,
-    Guid AuthorId ,
-    Author Author
-);
+public class Book
+{
+    public long Id { get; set; }
+    public string Title { get; set; }
+    public string? Description { get; set; }
+    public decimal Price { get; set; }
+    public DateOnly DateOfIssue { get; set; }
+    public long AuthorId { get; set; }
+    public Author Author { get; set; }
+}

@@ -17,7 +17,7 @@ public static class DependencyInjection
     private static IServiceCollection AddPersistence(this IServiceCollection service, IConfiguration configurations)
     {
         service.AddDbContext<ApplicationDBContext>(options =>{
-            options.UseSqlite("Data Source=CleanArchitecture.sqlite");
+            options.UseSqlite(configurations.GetConnectionString("Sqlite"));
         });
         return service;
     }

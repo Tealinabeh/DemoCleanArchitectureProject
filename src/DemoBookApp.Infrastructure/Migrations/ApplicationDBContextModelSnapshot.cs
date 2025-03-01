@@ -19,53 +19,64 @@ namespace DemoBookApp.Infrastructure.Migrations
 
             modelBuilder.Entity("DemoBookApp.Core.Author", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateOnly>("DateOfBirth")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Date of birth");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Name");
 
                     b.Property<string>("Surname")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Surname");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Authors", (string)null);
                 });
 
             modelBuilder.Entity("DemoBookApp.Core.Book", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("TEXT");
+                    b.Property<long>("AuthorId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateOnly>("DateOfIssue")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Date of issue");
 
                     b.Property<string>("Description")
-                        .HasColumnType("TEXT");
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Description");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Price");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasMaxLength(70)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Title");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("DemoBookApp.Core.Book", b =>
@@ -74,7 +85,8 @@ namespace DemoBookApp.Infrastructure.Migrations
                         .WithMany("IssuedBooks")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("Author");
 
                     b.Navigation("Author");
                 });

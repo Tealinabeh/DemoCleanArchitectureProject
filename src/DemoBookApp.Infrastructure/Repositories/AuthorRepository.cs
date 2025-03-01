@@ -29,9 +29,10 @@ namespace DemoBookApp.Infrastructure
                 return await result.ToListAsync(cancellationToken);
         }
 
-        public async Task<List<Author>> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<Author?> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
-            return await Authors.AsNoTracking().Where(a => a.Id == id).ToListAsync(cancellationToken);
+            return await Authors.AsNoTracking()
+                                .FirstOrDefaultAsync(a => a.Id == id, cancellationToken);
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bRvEPFfbdrU=",
+  "dgSpecHash": "/tw6y8D/sT8=",
   "success": true,
   "projectFilePath": "C:\\Users\\ilamo\\Desktop\\CleanArchitecture\\src\\DemoBookApp.Api\\DemoBookApp.Api.csproj",
   "expectedPackageFiles": [
@@ -35,6 +35,7 @@
     "C:\\Users\\ilamo\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.2\\microsoft.extensions.primitives.9.0.2.nupkg.sha512",
     "C:\\Users\\ilamo\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
     "C:\\Users\\ilamo\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
+    "C:\\Users\\ilamo\\.nuget\\packages\\scalar.aspnetcore\\2.0.20\\scalar.aspnetcore.2.0.20.nupkg.sha512",
     "C:\\Users\\ilamo\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.10\\sqlitepclraw.bundle_e_sqlite3.2.1.10.nupkg.sha512",
     "C:\\Users\\ilamo\\.nuget\\packages\\sqlitepclraw.core\\2.1.10\\sqlitepclraw.core.2.1.10.nupkg.sha512",
     "C:\\Users\\ilamo\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.10\\sqlitepclraw.lib.e_sqlite3.2.1.10.nupkg.sha512",
