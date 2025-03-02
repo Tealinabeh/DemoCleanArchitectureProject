@@ -8,8 +8,9 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
-        services.AddScoped<AuthorPersistenceDecorator, AuthorPersistenceDecorator>();
-        
+        services.AddScoped<IAuthorRepository, AuthorPersistenceDecorator>();
+        services.AddScoped<IBookRepository, BookPersistenceDecorator>();
+
         return services;
     }
 }

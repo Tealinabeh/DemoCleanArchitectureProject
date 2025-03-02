@@ -17,9 +17,9 @@ namespace DemoBookApp.Contracts.Mappers
                 book.Author.ToDTO()
             );
         }
-        
-         public static BookDTO ToDTO(this Book book)
-         {
+
+        public static BookDTO ToDTO(this Book book)
+        {
             return new BookDTO
             (
                 book.Title,
@@ -27,6 +27,6 @@ namespace DemoBookApp.Contracts.Mappers
                 book.Price,
                 book.DateOfIssue
             );
-        } 
+        }
     }
 }
