@@ -3,7 +3,7 @@
 public record AuthorQuery(
     string? Name,
     string? Surname,
-    string? SortBy,
+    string? OrderBy,
     bool IsDescending,
     int PageNumber = 1,
     int PageSize = 20

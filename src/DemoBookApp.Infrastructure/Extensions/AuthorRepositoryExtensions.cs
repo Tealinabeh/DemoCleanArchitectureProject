@@ -13,8 +13,8 @@ namespace DemoBookApp.Infrastructure.Extensions
             if (!string.IsNullOrWhiteSpace(query.Surname))
                 queryable.Where(a => a.Name == query.Surname);
 
-            if (!string.IsNullOrWhiteSpace(query.SortBy))
-                queryable.ResolveSortBy(query);
+            if (!string.IsNullOrWhiteSpace(query.OrderBy))
+                queryable.ResolveOrderBy(query);
                 
             var skipNumber = (query.PageNumber - 1) * query.PageSize;
 
@@ -22,11 +22,11 @@ namespace DemoBookApp.Infrastructure.Extensions
         }
 
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-        private static IQueryable<Author> ResolveSortBy(this IQueryable<Author> queryable, AuthorQuery query)
+        private static IQueryable<Author> ResolveOrderBy(this IQueryable<Author> queryable, AuthorQuery query)
         {
             if (query.IsDescending)
             {
-                switch (query.SortBy.ToLower())
+                switch (query.OrderBy.ToLower())
                 {
                     case "name":
                         queryable.OrderBy(a => a.Name);
@@ -38,7 +38,7 @@ namespace DemoBookApp.Infrastructure.Extensions
                         return queryable;
                 }
             }
-            switch (query.SortBy.ToLower())
+            switch (query.OrderBy.ToLower())
             {
                 case "name":
                     queryable.OrderByDescending(a => a.Name);

@@ -1,6 +1,5 @@
 using DemoBookApp.Contracts;
 using DemoBookApp.Core;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace DemoBookApp.Infrastructure.Extensions
 {
@@ -14,19 +13,19 @@ namespace DemoBookApp.Infrastructure.Extensions
             queryable.ResolvePriceSort(query)
                         .ResolveDateSort(query)
                         .ResolveAuthorSort(query)
-                        .ResolveSortBy(query);
+                        .ResolveOrderBy(query);
 
             var skipNumber = (query.PageNumber - 1) * query.PageSize;
 
             return queryable.Skip(skipNumber).Take(query.PageSize);
         }
-        private static IQueryable<Book> ResolveSortBy(this IQueryable<Book> queryable, BookQuery query)
+        private static IQueryable<Book> ResolveOrderBy(this IQueryable<Book> queryable, BookQuery query)
         {
-            if (string.IsNullOrWhiteSpace(query.SortBy))
+            if (string.IsNullOrWhiteSpace(query.OrderBy))
                 return queryable;
             if (query.IsDescending)
             {
-                switch (query.SortBy.ToLower())
+                switch (query.OrderBy.ToLower())
                 {
                     case "title":
                         return queryable.OrderByDescending(b => b.Title);
@@ -37,7 +36,7 @@ namespace DemoBookApp.Infrastructure.Extensions
             }
             else
             {
-                switch (query.SortBy.ToLower())
+                switch (query.OrderBy.ToLower())
                 {
                     case "title":
                         return queryable.OrderBy(b => b.Title);

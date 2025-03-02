@@ -12,7 +12,7 @@ namespace DemoBookApp.Contracts
         DateOnly? IssuedBefore,
         string? AuthorName,
         string? AuthorSurname,
-        string? SortBy,
+        string? OrderBy,
         bool IsDescending,
         int PageNumber = 1,
         int PageSize = 20

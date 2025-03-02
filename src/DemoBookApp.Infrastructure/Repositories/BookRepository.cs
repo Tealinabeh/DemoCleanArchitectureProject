@@ -31,5 +31,23 @@ namespace DemoBookApp.Infrastructure.Repositories
             return await Books.AsNoTracking()
                                 .FirstOrDefaultAsync(b => b.Id == id, token);
         }
+
+        public Task<bool> CreateAsync(Book book, CancellationToken token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateAsync(BookQuery query, CancellationToken token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> DeleteAsync(Book book, CancellationToken token)
+        {
+            Books.Remove(book);
+
+            await _dbContext.SaveChangesAsync(token);
+            return true;
+        }
     }
 }
