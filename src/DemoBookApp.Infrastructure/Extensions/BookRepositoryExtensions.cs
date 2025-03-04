@@ -97,5 +97,15 @@ namespace DemoBookApp.Infrastructure.Extensions
             }
             return queryable;
         }
+
+        public static void UpdateExistingWith(this Book existingBook, Book updateBook)
+        {
+            existingBook.Title = updateBook.Title;
+            existingBook.Description = updateBook.Description;
+            existingBook.Price = updateBook.Price;
+            existingBook.DateOfIssue = updateBook.DateOfIssue;
+            existingBook.Author = updateBook.Author;
+            existingBook.AuthorId = updateBook.AuthorId;
+        }
     }
 }
