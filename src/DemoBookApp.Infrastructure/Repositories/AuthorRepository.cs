@@ -24,7 +24,7 @@ namespace DemoBookApp.Infrastructure
             var resultQuery = Authors.AsQueryable();
 
             resultQuery.ResolveQuery(query);
-            var result = await resultQuery.ToListAsync(token);
+            var result = await resultQuery.Include(a => a.IssuedBooks).ToListAsync(token);
 
             if (result.Count == 0)
             {
@@ -37,6 +37,7 @@ namespace DemoBookApp.Infrastructure
         public async Task<Author> GetByIdAsync(long id, CancellationToken token)
         {
             var result = await Authors.AsNoTracking()
+                                .Include(a => a.IssuedBooks)
                                 .FirstOrDefaultAsync(a => a.Id == id, token);
             if (result is null)
                 throw new NullDatabaseEntityException($"There is no such author with id {id}");

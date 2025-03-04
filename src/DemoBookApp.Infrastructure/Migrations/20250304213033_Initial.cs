@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DemoBookApp.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,9 +17,9 @@ namespace DemoBookApp.Infrastructure.Migrations
                 {
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    Surname = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    Dateofbirth = table.Column<DateOnly>(name: "Date of birth", type: "TEXT", nullable: false)
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Surname = table.Column<string>(type: "TEXT", nullable: false),
+                    DateOfBirth = table.Column<DateOnly>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,17 +32,17 @@ namespace DemoBookApp.Infrastructure.Migrations
                 {
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", maxLength: 70, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", maxLength: 200, nullable: true),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Dateofissue = table.Column<DateOnly>(name: "Date of issue", type: "TEXT", nullable: false),
+                    Title = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    Price = table.Column<decimal>(type: "TEXT", precision: 18, scale: 2, nullable: false),
+                    DateOfIssue = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     AuthorId = table.Column<long>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Books", x => x.Id);
                     table.ForeignKey(
-                        name: "Author",
+                        name: "FK_Books_Authors_AuthorId",
                         column: x => x.AuthorId,
                         principalTable: "Authors",
                         principalColumn: "Id",

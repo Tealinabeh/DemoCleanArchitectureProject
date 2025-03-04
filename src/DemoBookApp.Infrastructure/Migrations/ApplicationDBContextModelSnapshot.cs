@@ -25,17 +25,15 @@ namespace DemoBookApp.Infrastructure.Migrations
 
                     b.Property<DateOnly>("DateOfBirth")
                         .HasColumnType("TEXT")
-                        .HasColumnName("Date of birth");
+                        .HasColumnName("DateOfBirth");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
                         .HasColumnType("TEXT")
                         .HasColumnName("Name");
 
                     b.Property<string>("Surname")
                         .IsRequired()
-                        .HasMaxLength(50)
                         .HasColumnType("TEXT")
                         .HasColumnName("Surname");
 
@@ -55,20 +53,20 @@ namespace DemoBookApp.Infrastructure.Migrations
 
                     b.Property<DateOnly>("DateOfIssue")
                         .HasColumnType("TEXT")
-                        .HasColumnName("Date of issue");
+                        .HasColumnName("DateOfIssue");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(200)
+                        .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("Description");
 
                     b.Property<decimal>("Price")
+                        .HasPrecision(18, 2)
                         .HasColumnType("TEXT")
                         .HasColumnName("Price");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(70)
                         .HasColumnType("TEXT")
                         .HasColumnName("Title");
 
@@ -85,8 +83,7 @@ namespace DemoBookApp.Infrastructure.Migrations
                         .WithMany("IssuedBooks")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("Author");
+                        .IsRequired();
 
                     b.Navigation("Author");
                 });

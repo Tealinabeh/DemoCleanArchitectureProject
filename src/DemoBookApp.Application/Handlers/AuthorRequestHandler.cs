@@ -3,19 +3,19 @@ using DemoBookApp.Contracts;
 using DemoBookApp.Contracts.Mappers;
 using DemoBookApp.Contracts.Requests;
 using DemoBookApp.Core;
-using DemoBookApp.Infrastructure;
-using DemoBookApp.Infrastructure.Persistence;
+using DemoBookApp.Infrastructure.Interfaces;
+
 
 
 namespace DemoBookApp.Application.Handlers
 {
     public class AuthorRequestHandler : IAuthorHandler
     {
-        private readonly AuthorRepository _repository;
+        private readonly IAuthorRepository _repository;
 
-        public AuthorRequestHandler(ApplicationDBContext context)
+        public AuthorRequestHandler(IAuthorRepository repository)
         {
-            _repository = new AuthorRepository(context);
+            _repository = repository;
         }
 
         public async Task<Result> CreateAsync(CreateAuthorRequest request, CancellationToken token)

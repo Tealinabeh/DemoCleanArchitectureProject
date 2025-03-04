@@ -13,7 +13,7 @@ namespace DemoBookApp.Application.Handlers
         private readonly IBookRepository _repository;
         private readonly IAuthorRepository _authorRepository;
 
-        public BookRequestHandler(ApplicationDBContext context, IBookRepository repository, IAuthorRepository authorRepository)
+        public BookRequestHandler(IBookRepository repository, IAuthorRepository authorRepository)
         {
             _repository = repository;
             _authorRepository = authorRepository;
@@ -23,8 +23,8 @@ namespace DemoBookApp.Application.Handlers
         {
             try
             {
-                var author = await _authorRepository.GetByIdAsync(request.AuthorId, token);
-                await _repository.CreateAsync(request.ToBook(author), token);
+                await _authorRepository.GetByIdAsync(request.AuthorId, token);
+                await _repository.CreateAsync(request.ToBook(), token);
                 return Result.CreateSuccessful();
             }
             catch (Exception e)
@@ -77,7 +77,7 @@ namespace DemoBookApp.Application.Handlers
             try
             {
                 var author = await _authorRepository.GetByIdAsync(request.AuthorId, token);
-                await _repository.UpdateAsync(id, request.ToBook(author), token);
+                await _repository.UpdateAsync(id, request.ToBook(), token);
                 return Result.CreateSuccessful();
             }
             catch (Exception e)

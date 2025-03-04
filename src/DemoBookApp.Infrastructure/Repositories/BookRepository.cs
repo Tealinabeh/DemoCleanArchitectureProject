@@ -21,8 +21,8 @@ namespace DemoBookApp.Infrastructure.Repositories
         public async Task<List<Book>> GetAsync(BookQuery query, CancellationToken token)
         {
             var resultQuery = Books.AsNoTracking().AsQueryable();
-            resultQuery.ResolveQuery(query);
-            var result = await resultQuery.ToListAsync(token);
+            resultQuery = resultQuery.ResolveQuery(query);
+            var result = await resultQuery.Include(b => b.Author).ToListAsync(token);
 
             if (result.Count == 0)
             {
@@ -36,6 +36,7 @@ namespace DemoBookApp.Infrastructure.Repositories
         public async Task<Book> GetByIdAsync(long id, CancellationToken token)
         {
             var result = await Books.AsNoTracking()
+                                .Include(b => b.Author)
                                 .FirstOrDefaultAsync(b => b.Id == id, token);
 
             if (result is null)

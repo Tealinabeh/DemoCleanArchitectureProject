@@ -7,8 +7,6 @@ namespace DemoBookApp.Infrastructure.Persistence.Configurations
 {
     public class AuthorConfiguration : IEntityTypeConfiguration<Author>
     {
-        private const int NameMaxLength = 50;
-        private const int SurnameMaxLength = 50;
         public void Configure(EntityTypeBuilder<Author> builder)
         {
             builder.ToTable("Authors");
@@ -17,21 +15,19 @@ namespace DemoBookApp.Infrastructure.Persistence.Configurations
 
             builder.Property(x => x.Name)
                     .IsRequired()
-                    .HasMaxLength(NameMaxLength)
                     .HasColumnName("Name");
 
             builder.Property(x => x.Surname)
                     .IsRequired()
-                    .HasMaxLength(SurnameMaxLength)
                     .HasColumnName("Surname");
 
             builder.Property(x => x.DateOfBirth)
                     .IsRequired()
-                    .HasColumnName("Date of birth");
+                    .HasColumnName("DateOfBirth");
 
             builder.HasMany(x => x.IssuedBooks)
-                    .WithOne(x => x.Author)
-                    .HasConstraintName("Issued books");
+                    .WithOne(x => x.Author)     
+                    .IsRequired();
         }  
     }
 }

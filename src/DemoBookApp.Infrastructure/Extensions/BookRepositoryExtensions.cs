@@ -7,13 +7,13 @@ namespace DemoBookApp.Infrastructure.Extensions
     {
         public static IQueryable<Book> ResolveQuery(this IQueryable<Book> queryable, BookQuery query)
         {
-            if (string.IsNullOrWhiteSpace(query.Title))
+            if (!string.IsNullOrWhiteSpace(query.Title))
                 queryable = queryable.Where(b => b.Title == query.Title);
 
-            queryable.ResolvePriceSort(query)
-                        .ResolveDateSort(query)
-                        .ResolveAuthorSort(query)
-                        .ResolveOrderBy(query);
+            queryable = queryable.ResolvePriceSort(query)
+                                    .ResolveDateSort(query)
+                                    .ResolveAuthorSort(query)
+                                    .ResolveOrderBy(query);
 
             var skipNumber = (query.PageNumber - 1) * query.PageSize;
 
@@ -26,11 +26,11 @@ namespace DemoBookApp.Infrastructure.Extensions
             if (query.IsDescending)
             {
                 switch (query.OrderBy.ToLower())
-                {
+                {       
                     case "title":
-                        return queryable.OrderByDescending(b => b.Title);
+                        return queryable = queryable.OrderByDescending(b => b.Title);
                     case "author":
-                        return queryable.OrderByDescending(b => b.Author.Surname)
+                        return queryable = queryable.OrderByDescending(b => b.Author.Surname)
                                         .ThenByDescending(b => b.Author.Name);
                 }
             }
@@ -39,9 +39,9 @@ namespace DemoBookApp.Infrastructure.Extensions
                 switch (query.OrderBy.ToLower())
                 {
                     case "title":
-                        return queryable.OrderBy(b => b.Title);
+                        return queryable = queryable.OrderBy(b => b.Title);
                     case "author":
-                        return queryable.OrderBy(b => b.Author.Surname)
+                        return queryable = queryable.OrderBy(b => b.Author.Surname)
                                         .ThenBy(b => b.Author.Name);
                 }
             }
@@ -49,11 +49,11 @@ namespace DemoBookApp.Infrastructure.Extensions
         }
         private static IQueryable<Book> ResolveAuthorSort(this IQueryable<Book> queryable, BookQuery query)
         {
-            if (string.IsNullOrWhiteSpace(query.AuthorName))
-                queryable = queryable.Where(b => b.Author.Name == query.AuthorName);
+            if (!string.IsNullOrWhiteSpace(query.AuthorName))
+                    queryable = queryable.Where(b => b.Author.Name == query.AuthorName);
 
-            if (string.IsNullOrWhiteSpace(query.AuthorSurname))
-                queryable = queryable.Where(b => b.Author.Name == query.AuthorSurname);
+            if (!string.IsNullOrWhiteSpace(query.AuthorSurname))
+                    queryable = queryable.Where(b => b.Author.Name == query.AuthorSurname);
             return queryable;
         }
 
@@ -61,13 +61,13 @@ namespace DemoBookApp.Infrastructure.Extensions
         {
             var dateCheckFlag = false;
 
-            if (query.IssuedAfter != null)
+            if (query.IssuedAfter is not null)
             {
                 queryable = queryable.Where(b => b.DateOfIssue >= query.IssuedAfter);
                 dateCheckFlag = true;
             }
 
-            if (query.IssuedBefore != null)
+            if (query.IssuedBefore is not null)
             {
                 if (dateCheckFlag && query.IssuedAfter < query.IssuedBefore)
                     throw new QueryArgumentException($"Issue date filters are incorrect. Impossible to find with parameters: {query.IssuedAfter} < {query.IssuedBefore}");
@@ -81,13 +81,13 @@ namespace DemoBookApp.Infrastructure.Extensions
         {
             var priceCheckFlag = false;
 
-            if (query.LowestPrice != null)
+            if (query.LowestPrice is not null)
             {
                 queryable = queryable.Where(b => b.Price >= query.LowestPrice);
                 priceCheckFlag = true;
             }
 
-            if (query.HighestPrice != null)
+            if (query.HighestPrice is not null)
             {
                 if (priceCheckFlag && query.HighestPrice < query.LowestPrice)
                     throw new QueryArgumentException("Lowest price of book is higher than the highest price");

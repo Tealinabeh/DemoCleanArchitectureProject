@@ -23,6 +23,7 @@ namespace DemoBookApp.Contracts.Mappers
         public static AuthorDTO ToDTO(this Author author){
             return new AuthorDTO
             (
+                author.Id,
                 author.Name,
                 author.Surname,
                 author.DateOfBirth

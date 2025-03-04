@@ -62,7 +62,7 @@ namespace DemoBookApp.Api.Controllers
             return NoContent();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody]CreateBookRequest request, CancellationToken token)
+            public async Task<IActionResult> CreateAsync([FromBody]CreateBookRequest request, CancellationToken token)
         {
             var result = await _persistence.CreateAsync(request, token);
             if (!result.IsSuccess)
