@@ -23,13 +23,12 @@ namespace DemoBookApp.Infrastructure
         {
             var resultQuery = Authors.AsQueryable();
 
-            resultQuery.ResolveQuery(query);
+            resultQuery = resultQuery.ResolveQuery(query);
             var result = await resultQuery.Include(a => a.IssuedBooks).ToListAsync(token);
 
             if (result.Count == 0)
             {
-                string jsonQuery = JsonSerializer.Serialize(query, new JsonSerializerOptions { WriteIndented = true });
-                throw new ArgumentException($"Couldn't find a single author with given parameters:\n{jsonQuery}");
+                ThrowQueryException(query);
             }
             return result;
         }
@@ -72,6 +71,15 @@ namespace DemoBookApp.Infrastructure
 
             Authors.Remove(author);
             await _dbContext.SaveChangesAsync(token);
+        }
+        private static void ThrowQueryException(AuthorQuery query)
+        {
+            string jsonQuery = JsonSerializer.Serialize(query, new JsonSerializerOptions
+            {
+                WriteIndented = true, 
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+            });
+            throw new ArgumentException($"Couldn't find a single author with given parameters:\n{jsonQuery}");
         }
     }
 }

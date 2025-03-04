@@ -26,9 +26,8 @@ namespace DemoBookApp.Infrastructure.Repositories
 
             if (result.Count == 0)
             {
-                string jsonQuery = JsonSerializer.Serialize(query, new JsonSerializerOptions { WriteIndented = true });
-                throw new ArgumentException($"Couldn't find a single book with given parameters:\n{jsonQuery}");
-            }   
+                ThrowQueryException(query);
+            }
 
             return result;
         }
@@ -74,6 +73,16 @@ namespace DemoBookApp.Infrastructure.Repositories
 
             Books.Remove(book);
             await _dbContext.SaveChangesAsync(token);
+        }
+
+        private static void ThrowQueryException(BookQuery query)
+        {
+            string jsonQuery = JsonSerializer.Serialize(query, new JsonSerializerOptions
+            {
+                WriteIndented = true, 
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+            });
+            throw new ArgumentException($"Couldn't find a single book with given parameters:\n{jsonQuery}");
         }
     }
 }

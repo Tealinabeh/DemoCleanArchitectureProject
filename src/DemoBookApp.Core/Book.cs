@@ -8,5 +8,5 @@ public class Book
     public decimal Price { get; set; }
     public DateOnly DateOfIssue { get; set; }
     public long AuthorId { get; set; }
-    public Author Author { get; set; } = new Author();
+    public Author Author { get; set; }
 }
