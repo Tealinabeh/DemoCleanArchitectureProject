@@ -4,10 +4,10 @@ namespace DemoBookApp.Contracts.Requests
 {
     public record UpdateBookRequest
     (
-        [MinLength(3), MaxLength(70)]string Title,
-        [MaxLength(200)] string Description,
-        [Range(0, 2000)] decimal Price,
-        DateOnly DateOfIssue,
-        long AuthorId
+        [Required, MinLength(3), MaxLength(70)] string Title,
+        [Required, MaxLength(200)] string Description,
+        [Required, Range(0, 2000)] decimal Price,
+        [Required] DateOnly DateOfIssue,
+        [Required] long AuthorId
     );
 }

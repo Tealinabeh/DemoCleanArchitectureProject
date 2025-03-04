@@ -24,12 +24,13 @@ namespace DemoBookApp.Api.Controllers
             {
                 return result.Exception switch
                 {
+                    QueryArgumentException => BadRequest(result.Exception.Message),
                     ArgumentException => NotFound(result.Exception.Message),
-                    NullDatabaseEntityException => BadRequest(result.Exception.Message),
+                    NullDatabaseEntityException => NotFound(result.Exception.Message),
                     _ => StatusCode(500, StatusCode500Message)
                 };
             }
-            return Ok(result.Value.Select(a => a.ToGetResponse()));
+            return Ok(result.Value.Select(b => b.ToGetResponse()));
         }
 
         [HttpGet("{id:long}")]

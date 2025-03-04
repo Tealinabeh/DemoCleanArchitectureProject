@@ -1,3 +1,4 @@
+using DemoBookApp.Contracts.Requests;
 using DemoBookApp.Core;
 
 namespace DemoBookApp.Contracts.Mappers
@@ -38,6 +39,22 @@ namespace DemoBookApp.Contracts.Mappers
                 age--;
 
             return (ushort)age;
+        }
+        public static Author ToAuthor(this CreateAuthorRequest request)
+        {
+            return new Author(){
+                Name = request.Name,
+                Surname = request.Surname,
+                DateOfBirth = request.DateOfBirth,
+            };
+        }
+        public static Author ToAuthor(this UpdateAuthorRequest request)
+        {
+            return new Author(){
+                Name = request.Name,
+                Surname = request.Surname,
+                DateOfBirth = request.DateOfBirth,
+            };
         }
     }
 }

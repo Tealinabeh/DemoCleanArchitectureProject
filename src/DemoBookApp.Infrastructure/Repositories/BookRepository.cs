@@ -1,3 +1,4 @@
+using System.Text.Json;
 using DemoBookApp.Contracts;
 using DemoBookApp.Core;
 using DemoBookApp.Infrastructure.Extensions;
@@ -24,7 +25,10 @@ namespace DemoBookApp.Infrastructure.Repositories
             var result = await resultQuery.ToListAsync(token);
 
             if (result.Count == 0)
-                throw new ArgumentException($"Couldn't find a single book with given parameters :\n{query}\n");
+            {
+                string jsonQuery = JsonSerializer.Serialize(query, new JsonSerializerOptions { WriteIndented = true });
+                throw new ArgumentException($"Couldn't find a single book with given parameters:\n{jsonQuery}");
+            }   
 
             return result;
         }
@@ -60,13 +64,11 @@ namespace DemoBookApp.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-
-
         public async Task DeleteAsync(long id, CancellationToken token)
         {
             var book = await Books.FirstOrDefaultAsync(b => b.Id == id, token);
 
-            if (book == null)
+            if (book is null)
                 throw new NullReferenceException($"Book with id {id} doesn't exist.");
 
             Books.Remove(book);

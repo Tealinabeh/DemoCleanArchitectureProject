@@ -6,14 +6,14 @@ using DemoBookApp.Core;
 using DemoBookApp.Infrastructure.Interfaces;
 using DemoBookApp.Infrastructure.Persistence;
 
-namespace DemoBookApp.Application.Decorators
+namespace DemoBookApp.Application.Handlers
 {
-    public class BookPersistenceHandler : IBookHandler
+    public class BookRequestHandler : IBookHandler
     {
         private readonly IBookRepository _repository;
         private readonly IAuthorRepository _authorRepository;
 
-        public BookPersistenceHandler(ApplicationDBContext context, IBookRepository repository, IAuthorRepository authorRepository)
+        public BookRequestHandler(ApplicationDBContext context, IBookRepository repository, IAuthorRepository authorRepository)
         {
             _repository = repository;
             _authorRepository = authorRepository;

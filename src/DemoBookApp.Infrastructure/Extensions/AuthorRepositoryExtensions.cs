@@ -13,17 +13,24 @@ namespace DemoBookApp.Infrastructure.Extensions
             if (!string.IsNullOrWhiteSpace(query.Surname))
                 queryable.Where(a => a.Name == query.Surname);
 
-            if (!string.IsNullOrWhiteSpace(query.OrderBy))
                 queryable.ResolveOrderBy(query);
                 
             var skipNumber = (query.PageNumber - 1) * query.PageSize;
 
             return queryable.Skip(skipNumber).Take(query.PageSize);
         }
-
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+        
+        public static void UpdateWithExisting(this Author existingAuthor, Author updateAuthor)
+        {
+            existingAuthor.Name = updateAuthor.Name;
+            existingAuthor.Surname = updateAuthor.Surname;
+            existingAuthor.DateOfBirth = updateAuthor.DateOfBirth;
+        }
         private static IQueryable<Author> ResolveOrderBy(this IQueryable<Author> queryable, AuthorQuery query)
         {
+            if (string.IsNullOrWhiteSpace(query.OrderBy))
+                return queryable;
+
             if (query.IsDescending)
             {
                 switch (query.OrderBy.ToLower())
@@ -52,5 +59,4 @@ namespace DemoBookApp.Infrastructure.Extensions
             return queryable;
         }
     }
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
 }
