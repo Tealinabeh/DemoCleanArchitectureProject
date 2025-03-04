@@ -8,12 +8,12 @@ namespace DemoBookApp.Infrastructure.Extensions
         public static IQueryable<Author> ResolveQuery(this IQueryable<Author> queryable, AuthorQuery query)
         {
             if (!string.IsNullOrWhiteSpace(query.Name))
-                queryable.Where(a => a.Name == query.Name);
+                queryable = queryable.Where(a => a.Name == query.Name);
 
             if (!string.IsNullOrWhiteSpace(query.Surname))
-                queryable.Where(a => a.Name == query.Surname);
+                queryable = queryable.Where(a => a.Name == query.Surname);
 
-                queryable.ResolveOrderBy(query);
+                queryable = queryable.ResolveOrderBy(query);
                 
             var skipNumber = (query.PageNumber - 1) * query.PageSize;
 
@@ -36,10 +36,10 @@ namespace DemoBookApp.Infrastructure.Extensions
                 switch (query.OrderBy.ToLower())
                 {
                     case "name":
-                        queryable.OrderBy(a => a.Name);
+                        queryable = queryable.OrderBy(a => a.Name);
                         break;
                     case "surname":
-                        queryable.OrderBy(a => a.Surname);
+                        queryable = queryable.OrderBy(a => a.Surname);
                         break;
                     default:
                         return queryable;
@@ -48,10 +48,10 @@ namespace DemoBookApp.Infrastructure.Extensions
             switch (query.OrderBy.ToLower())
             {
                 case "name":
-                    queryable.OrderByDescending(a => a.Name);
+                    queryable = queryable.OrderByDescending(a => a.Name);
                     break;
                 case "surname":
-                    queryable.OrderByDescending(a => a.Surname);
+                    queryable = queryable.OrderByDescending(a => a.Surname);
                     break;
                 default:
                     return queryable;
