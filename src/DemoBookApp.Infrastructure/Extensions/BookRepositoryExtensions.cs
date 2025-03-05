@@ -69,8 +69,8 @@ namespace DemoBookApp.Infrastructure.Extensions
 
             if (query.IssuedBefore is not null)
             {
-                if (dateCheckFlag && query.IssuedAfter < query.IssuedBefore)
-                    throw new QueryArgumentException($"Issue date filters are incorrect. Impossible to find with parameters: {query.IssuedAfter} < {query.IssuedBefore}");
+                if (dateCheckFlag && query.IssuedAfter > query.IssuedBefore)
+                    throw new QueryArgumentException($"Issue date filters are incorrect. Impossible to find with parameters:\nBook was issued after {query.IssuedAfter} but before {query.IssuedBefore}");
 
                 queryable = queryable.Where(b => b.DateOfIssue <= query.IssuedBefore);
             }
@@ -96,16 +96,6 @@ namespace DemoBookApp.Infrastructure.Extensions
 
             }
             return queryable;
-        }
-
-        public static void UpdateExistingWith(this Book existingBook, Book updateBook)
-        {
-            existingBook.Title = updateBook.Title;
-            existingBook.Description = updateBook.Description;
-            existingBook.Price = updateBook.Price;
-            existingBook.DateOfIssue = updateBook.DateOfIssue;
-            existingBook.Author = updateBook.Author;
-            existingBook.AuthorId = updateBook.AuthorId;
         }
     }
 }

@@ -19,13 +19,6 @@ namespace DemoBookApp.Infrastructure.Extensions
 
             return queryable.Skip(skipNumber).Take(query.PageSize);
         }
-        
-        public static void UpdateWithExisting(this Author existingAuthor, Author updateAuthor)
-        {
-            existingAuthor.Name = updateAuthor.Name;
-            existingAuthor.Surname = updateAuthor.Surname;
-            existingAuthor.DateOfBirth = updateAuthor.DateOfBirth;
-        }
         private static IQueryable<Author> ResolveOrderBy(this IQueryable<Author> queryable, AuthorQuery query)
         {
             if (string.IsNullOrWhiteSpace(query.OrderBy))

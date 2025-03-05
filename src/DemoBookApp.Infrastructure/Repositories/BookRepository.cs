@@ -54,25 +54,26 @@ namespace DemoBookApp.Infrastructure.Repositories
 
         public async Task UpdateAsync(long id, Book updateBook, CancellationToken token)
         {
-            var existingBook = await Books.FirstOrDefaultAsync(b => b.Id == id, token);
+            var affectedRows = 
+                await Books.Where(b => b.Id == id)
+                        .ExecuteUpdateAsync(u => u
+                        .SetProperty(b => b.Title, updateBook.Title)
+                        .SetProperty(b => b.Description, updateBook.Description)
+                        .SetProperty(b => b.DateOfIssue, updateBook.DateOfIssue)
+                        .SetProperty(b => b.Price, updateBook.Price)
+                        .SetProperty(b => b.AuthorId, updateBook.AuthorId), token);
 
-            if (existingBook is null)
-                throw new NullDatabaseEntityException($"Book with id {id} doesn't exist. Use create method instead.");
-
-            existingBook.UpdateExistingWith(updateBook);
-
-            await _dbContext.SaveChangesAsync();
+            if(affectedRows == 0)
+                throw new NullDatabaseEntityException($"No book found with Id {id}.\nYou may put the wrong Id or the book doesn't exist and you can create it.");
+            
         }
 
         public async Task DeleteAsync(long id, CancellationToken token)
         {
-            var book = await Books.FirstOrDefaultAsync(b => b.Id == id, token);
+            var affectedRows = await Books.Where(b => b.Id == id).ExecuteDeleteAsync(token);
 
-            if (book is null)
-                throw new NullReferenceException($"Book with id {id} doesn't exist.");
-
-            Books.Remove(book);
-            await _dbContext.SaveChangesAsync(token);
+            if(affectedRows == 0)
+                throw new NullDatabaseEntityException($"No book found with Id {id} while deletion.");
         }
 
         private static void ThrowQueryException(BookQuery query)

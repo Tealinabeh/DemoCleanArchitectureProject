@@ -4,7 +4,6 @@ using DemoBookApp.Core;
 using DemoBookApp.Infrastructure.Extensions;
 using DemoBookApp.Infrastructure.Interfaces;
 using DemoBookApp.Infrastructure.Persistence;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace DemoBookApp.Infrastructure
@@ -52,14 +51,15 @@ namespace DemoBookApp.Infrastructure
 
         public async Task UpdateAsync(long id, Author updateAuthor, CancellationToken token)
         {
-            var existingAuthor = await Authors.FirstOrDefaultAsync(a => a.Id == id, token);
+             var affectedRows = 
+                await Authors.Where(a => a.Id == id)
+                        .ExecuteUpdateAsync(u => u
+                        .SetProperty(a => a.Name, updateAuthor.Name)
+                        .SetProperty(a => a.Surname, updateAuthor.Surname)
+                        .SetProperty(a => a.DateOfBirth, updateAuthor.DateOfBirth), token);
 
-            if (existingAuthor is null)
-                throw new NullDatabaseEntityException($"Author with id {id} doesn't exist. Use create method instead.");
-
-            existingAuthor.UpdateWithExisting(updateAuthor);
-
-            await _dbContext.SaveChangesAsync();
+            if(affectedRows == 0)
+                throw new NullDatabaseEntityException($"No author found with Id {id}.\nYou may put the wrong Id or the author doesn't exist and you can create one.");
         }
 
         public async Task DeleteAsync(long id, CancellationToken token)
