@@ -2,11 +2,13 @@ using DemoBookApp.Application.Interfaces;
 using DemoBookApp.Contracts;
 using DemoBookApp.Contracts.Mappers;
 using DemoBookApp.Contracts.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemoBookApp.Api.Controllers
 {
     [Route("api/books"), ApiController]
+    [Authorize(Policy = "RequireAdminRole")]
     public class BookController : ControllerBase
     {
         private const string StatusCode500Message = "An unexpected error occurred.";
@@ -16,7 +18,7 @@ namespace DemoBookApp.Api.Controllers
         {
             _persistence = persistence;
         }
-        [HttpGet]
+        [HttpGet, AllowAnonymous]
         public async Task<IActionResult> GetAsync([FromQuery] BookQuery query, CancellationToken token)
         {
             var result = await _persistence.GetAsync(query, token);
@@ -33,7 +35,7 @@ namespace DemoBookApp.Api.Controllers
             return Ok(result.Value.Select(b => b.ToGetResponse()));
         }
 
-        [HttpGet("{id:long}")]
+        [HttpGet("{id:long}"), AllowAnonymous]
         public async Task<IActionResult> GetAsync([FromRoute] long id, CancellationToken token)
         {
             var result = await _persistence.GetByIdAsync(id, token);

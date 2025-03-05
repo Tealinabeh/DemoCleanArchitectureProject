@@ -9,3 +9,4 @@ C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\D
 C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\refint\DemoBookApp.Core.dll
 C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\DemoBookApp.Core.pdb
 C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\ref\DemoBookApp.Core.dll
+C:\Users\ilamo\Desktop\CleanArchitecture\src\DemoBookApp.Core\obj\Debug\net9.0\DemoBookApp.Core.csproj.AssemblyReference.cache

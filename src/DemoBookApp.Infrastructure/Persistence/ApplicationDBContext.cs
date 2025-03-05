@@ -1,21 +1,29 @@
-using System.Dynamic;
 using DemoBookApp.Core;
 using DemoBookApp.Infrastructure.Persistence.Configurations;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DemoBookApp.Infrastructure.Persistence
 {
     public class ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
-        : DbContext(options)
+        : IdentityDbContext<ApplicationUser>(options)
     {
+        private const string UserRoleId = "c7e9a3a8-4e3c-4c2e-8f3b-1f5c97a6b789";
+        private const string AdminRoleId = "d3f7a8a9-2d1b-46e6-9cbb-4a7e916d2a60";
         override protected void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+
             builder.ApplyConfiguration(new AuthorConfiguration());
             builder.ApplyConfiguration(new BookConfiguration());
 
             SeedAuthors(builder);
             SeedBooks(builder);
+            SeedRoles(builder);
         }
+
+
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
 
@@ -47,6 +55,26 @@ namespace DemoBookApp.Infrastructure.Persistence
                 new Book { Id = 10, Title = "Crime and Punishment", Description = "Psychological novel", Price = 11.99m, DateOfIssue = new DateOnly(1866, 1, 1), AuthorId = 6},
                 new Book { Id = 11, Title = "The Brothers Karamazov", Description = "Philosophical novel", Price = 13.99m, DateOfIssue = new DateOnly(1880, 11, 1), AuthorId = 6}
             );
+        }
+        private void SeedRoles(ModelBuilder builder){
+
+            List<IdentityRole> roles= new()
+            {
+                new IdentityRole 
+                {
+                    Id = UserRoleId,
+                    Name = "User",
+                    NormalizedName = "USER"
+                }, 
+                new IdentityRole 
+                {
+                    Id = AdminRoleId,
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
+                }, 
+            };
+
+            builder.Entity<IdentityRole>().HasData(roles);
         }
     }
 }
