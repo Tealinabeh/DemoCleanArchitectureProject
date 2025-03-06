@@ -19,5 +19,6 @@ namespace DemoBookApp.Contracts.Mappers
                 Email = request.Email.ToLower(),
             };
         }
+        
     }
 }

@@ -53,7 +53,7 @@ namespace DemoBookApp.Infrastructure.Extensions
                     queryable = queryable.Where(b => b.Author.Name == query.AuthorName);
 
             if (!string.IsNullOrWhiteSpace(query.AuthorSurname))
-                    queryable = queryable.Where(b => b.Author.Name == query.AuthorSurname);
+                    queryable = queryable.Where(b => b.Author.Surname == query.AuthorSurname);
             return queryable;
         }
 

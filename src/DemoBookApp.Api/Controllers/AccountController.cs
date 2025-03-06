@@ -1,10 +1,7 @@
 using DemoBookApp.Application.Interfaces;
 using DemoBookApp.Contracts;
-using DemoBookApp.Contracts.Mappers;
 using DemoBookApp.Contracts.Requests;
-using DemoBookApp.Contracts.Responses;
-using DemoBookApp.Core;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemoBookApp.Api.Controllers
@@ -49,6 +46,22 @@ namespace DemoBookApp.Api.Controllers
                 };
             }
             return Ok(result.Value);
+        }
+        [HttpPost("changeRole")]
+        [Authorize(Policy = "RequireAdminRole")]
+        public async Task<IActionResult> RemoveRoleAsync([FromBody] ChangeRoleRequest request)
+        {
+            var result = await _handler.ChangeRoleAsync(request);
+
+            if (!result.IsSuccess)
+            {
+                return result.Exception switch
+                {
+                    InvalidOperationException => BadRequest(result.Exception.Message),
+                    _ => StatusCode(500, result.Exception.Message),
+                };
+            }
+            return Ok();
         }
     }
 }

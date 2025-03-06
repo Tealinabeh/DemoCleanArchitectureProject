@@ -8,5 +8,6 @@ namespace DemoBookApp.Application.Interfaces
     {
         public Task<ResultOf<NewUserCreatedResponse>> RegisterAsync(RegisterUserRequest request);
         public Task<ResultOf<UserLoggedInResponse>> LogInAsync(LogInUserRequest request);
+        public Task<Result> ChangeRoleAsync(ChangeRoleRequest request);
     }
 }

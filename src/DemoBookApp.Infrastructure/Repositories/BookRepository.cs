@@ -31,6 +31,17 @@ namespace DemoBookApp.Infrastructure.Repositories
 
             return result;
         }
+        public async Task<List<Book>> GetByIdsAsync(IEnumerable<long> ids, CancellationToken token)
+        {
+            var result = await Books.AsNoTracking()
+                                .Include(b => b.Author)
+                                .Where(a => ids.Contains(a.Id))
+                                .ToListAsync(token);
+            if (result.Count == 0)
+                throw new NullDatabaseEntityException("Couldn't find any books with given ids.");
+    
+            return result;
+        }
 
         public async Task<Book> GetByIdAsync(long id, CancellationToken token)
         {

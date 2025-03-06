@@ -1,4 +1,5 @@
 using DemoBookApp.Contracts.Requests;
+using DemoBookApp.Contracts.Responses;
 using DemoBookApp.Core;
 
 namespace DemoBookApp.Contracts.Mappers

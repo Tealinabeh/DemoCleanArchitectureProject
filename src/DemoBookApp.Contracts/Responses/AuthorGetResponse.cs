@@ -1,5 +1,4 @@
-
-namespace DemoBookApp.Contracts
+namespace DemoBookApp.Contracts.Responses
 {
     public record AuthorGetResponse
     (

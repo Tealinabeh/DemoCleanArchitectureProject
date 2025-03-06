@@ -19,6 +19,7 @@ public static class DependencyInjection
         services.AddScoped<IAuthorHandler, AuthorRequestHandler>();
         services.AddScoped<IBookHandler, BookRequestHandler>();
         services.AddScoped<IAccountHandler, AccountHandler>();
+        services.AddScoped<IUserHandler, UserHandler>();
 
         return services;
     }

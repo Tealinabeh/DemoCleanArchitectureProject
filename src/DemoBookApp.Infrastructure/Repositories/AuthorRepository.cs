@@ -32,6 +32,17 @@ namespace DemoBookApp.Infrastructure
             return result;
         }
 
+        public async Task<List<Author>> GetByIdsAsync(IEnumerable<long> ids, CancellationToken token)
+        {
+            var result = await Authors.AsNoTracking()
+                                .Include(a => a.IssuedBooks)
+                                .Where(a => ids.Contains(a.Id))
+                                .ToListAsync(token);
+            if (result.Count == 0)
+                throw new NullDatabaseEntityException("Couldn't find any authors with given ids.");
+    
+            return result;
+        }
         public async Task<Author> GetByIdAsync(long id, CancellationToken token)
         {
             var result = await Authors.AsNoTracking()
@@ -81,5 +92,6 @@ namespace DemoBookApp.Infrastructure
             });
             throw new ArgumentException($"Couldn't find a single author with given parameters:\n{jsonQuery}");
         }
+
     }
 }
