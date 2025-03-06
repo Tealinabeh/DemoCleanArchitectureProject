@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-
 namespace DemoBookApp.Contracts
 {
     public interface IResult
