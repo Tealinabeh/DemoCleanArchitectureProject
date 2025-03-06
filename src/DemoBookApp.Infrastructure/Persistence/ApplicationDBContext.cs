@@ -2,7 +2,6 @@ using DemoBookApp.Core;
 using DemoBookApp.Infrastructure.Persistence.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace DemoBookApp.Infrastructure.Persistence
@@ -60,7 +59,6 @@ namespace DemoBookApp.Infrastructure.Persistence
         }
         private void SeedRoles(ModelBuilder builder)
         {
-
             List<IdentityRole> roles = new()
             {
                 new IdentityRole
@@ -90,7 +88,7 @@ namespace DemoBookApp.Infrastructure.Persistence
             var password = "Supersecurepassword=123";
                               //Hardcoded from PasswordHasher<ApplicationUser>().HashPassword(null, "password")
             var passwordHash = "AQAAAAIAAYagAAAAEPkOEYBf3FFtpqJ6E/T+fXsa5fZkqs0P2Me6of4k6qTKJ/GTuXY5E4QIJ61g3aK7Eg==";
-            
+
 #pragma warning restore CS0219 
 
             var adminUser = new ApplicationUser
@@ -112,7 +110,6 @@ namespace DemoBookApp.Infrastructure.Persistence
                 UserId = idString,
                 RoleId = AdminRoleId
             };
-
             builder.Entity<IdentityUserRole<string>>().HasData(adminUserRole);
         }
     }

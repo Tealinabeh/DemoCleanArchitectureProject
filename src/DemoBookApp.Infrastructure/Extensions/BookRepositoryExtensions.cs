@@ -1,4 +1,5 @@
 using DemoBookApp.Contracts;
+using DemoBookApp.Contracts.Exceptions;
 using DemoBookApp.Core;
 
 namespace DemoBookApp.Infrastructure.Extensions

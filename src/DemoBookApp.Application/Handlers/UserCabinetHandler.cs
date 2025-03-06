@@ -1,5 +1,6 @@
 using DemoBookApp.Application.Interfaces;
 using DemoBookApp.Contracts;
+using DemoBookApp.Contracts.Exceptions;
 using DemoBookApp.Contracts.Mappers;
 using DemoBookApp.Contracts.Responses;
 using DemoBookApp.Core;

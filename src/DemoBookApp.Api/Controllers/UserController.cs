@@ -1,5 +1,5 @@
 using DemoBookApp.Application.Interfaces;
-using DemoBookApp.Contracts;
+using DemoBookApp.Contracts.Exceptions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

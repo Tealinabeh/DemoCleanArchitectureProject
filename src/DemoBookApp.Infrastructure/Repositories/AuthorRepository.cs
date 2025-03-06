@@ -1,5 +1,6 @@
 using System.Text.Json;
 using DemoBookApp.Contracts;
+using DemoBookApp.Contracts.Exceptions;
 using DemoBookApp.Core;
 using DemoBookApp.Infrastructure.Extensions;
 using DemoBookApp.Infrastructure.Interfaces;
