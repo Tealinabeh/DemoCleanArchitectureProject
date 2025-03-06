@@ -19,6 +19,7 @@ namespace DemoBookApp.Api.Controllers
         }
         
         [HttpGet, AllowAnonymous]
+        [EndpointSummary("Get by query")]
         public async Task<IActionResult> GetAsync([FromQuery] AuthorQuery query, CancellationToken token)
         {
             var result = await _persistence.GetAsync(query, token);
@@ -34,7 +35,9 @@ namespace DemoBookApp.Api.Controllers
             }
             return Ok(result.Value.Select(a => a.ToGetResponse()));
         }
+
         [HttpGet("{id:long}"), AllowAnonymous]
+        [EndpointSummary("Get by id")]
         public async Task<IActionResult> GetAsync([FromRoute] long id, CancellationToken token)
         {
             var result = await _persistence.GetByIdAsync(id, token);
@@ -49,6 +52,7 @@ namespace DemoBookApp.Api.Controllers
             return Ok(result.Value.ToGetResponse());
         }
         [HttpPut("{id:long}")]
+        [EndpointSummary("Update existing")]
         public async Task<IActionResult> UpdateAsync([FromRoute] long id, UpdateAuthorRequest request, CancellationToken token)
         {
             var result = await _persistence.UpdateAsync(id, request, token);
@@ -63,6 +67,7 @@ namespace DemoBookApp.Api.Controllers
             return NoContent();
         }
         [HttpPost]  
+        [EndpointSummary("Create new")]
         public async Task<IActionResult> CreateAsync([FromBody]CreateAuthorRequest request, CancellationToken token)
         {
             var result = await _persistence.CreateAsync(request, token);
@@ -77,6 +82,7 @@ namespace DemoBookApp.Api.Controllers
             return NoContent();
         }
         [HttpDelete("{id:long}")]
+        [EndpointSummary("Delete")]
         public async Task<IActionResult> DeleteAsync([FromRoute]long id, CancellationToken token)
         {
             var result = await _persistence.DeleteAsync(id, token);

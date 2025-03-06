@@ -18,6 +18,7 @@ namespace DemoBookApp.Api.Controllers
         }
 
         [HttpPost("register")]
+        [EndpointSummary("Register")]
         public async Task<IActionResult> RegisterAsync([FromBody] RegisterUserRequest request)
         {
             var result = await _handler.RegisterAsync(request);
@@ -33,6 +34,7 @@ namespace DemoBookApp.Api.Controllers
             return StatusCode(201, result.Value);
         }
         [HttpPost("login")]
+        [EndpointSummary("Log in")]
         public async Task<IActionResult> LogInAsync([FromBody] LogInUserRequest request)
         {
             var result = await _handler.LogInAsync(request);
@@ -49,7 +51,8 @@ namespace DemoBookApp.Api.Controllers
         }
         [HttpPost("changeRole")]
         [Authorize(Policy = "RequireAdminRole")]
-        public async Task<IActionResult> RemoveRoleAsync([FromBody] ChangeRoleRequest request)
+        [EndpointSummary("Change role")]
+        public async Task<IActionResult> ChangeRoleAsync([FromBody] ChangeRoleRequest request)
         {
             var result = await _handler.ChangeRoleAsync(request);
 

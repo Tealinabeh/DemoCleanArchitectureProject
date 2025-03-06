@@ -20,6 +20,7 @@ namespace DemoBookApp.Api.Controllers
             _persistence = persistence;
         }
         [HttpGet, AllowAnonymous]
+        [EndpointSummary("Get by query")]
         public async Task<IActionResult> GetAsync([FromQuery] BookQuery query, CancellationToken token)
         {
             var result = await _persistence.GetAsync(query, token);
@@ -37,6 +38,7 @@ namespace DemoBookApp.Api.Controllers
         }
 
         [HttpGet("{id:long}"), AllowAnonymous]
+        [EndpointSummary("Get by id")]
         public async Task<IActionResult> GetAsync([FromRoute] long id, CancellationToken token)
         {
             var result = await _persistence.GetByIdAsync(id, token);
@@ -51,6 +53,7 @@ namespace DemoBookApp.Api.Controllers
             return Ok(result.Value.ToGetResponse());
         }
         [HttpPut("{id:long}")]
+        [EndpointSummary("Update existing")]
         public async Task<IActionResult> UpdateAsync([FromRoute] long id, UpdateBookRequest request, CancellationToken token)
         {
             var result = await _persistence.UpdateAsync(id, request, token);
@@ -65,7 +68,8 @@ namespace DemoBookApp.Api.Controllers
             return NoContent();
         }
         [HttpPost]
-            public async Task<IActionResult> CreateAsync([FromBody]CreateBookRequest request, CancellationToken token)
+        [EndpointSummary("Create new")]
+        public async Task<IActionResult> CreateAsync([FromBody] CreateBookRequest request, CancellationToken token)
         {
             var result = await _persistence.CreateAsync(request, token);
             if (!result.IsSuccess)
@@ -79,7 +83,8 @@ namespace DemoBookApp.Api.Controllers
             return NoContent();
         }
         [HttpDelete("{id:long}")]
-        public async Task<IActionResult> DeleteAsync([FromRoute]long id, CancellationToken token)
+        [EndpointSummary("Delete")]
+        public async Task<IActionResult> DeleteAsync([FromRoute] long id, CancellationToken token)
         {
             var result = await _persistence.DeleteAsync(id, token);
             if (!result.IsSuccess)
@@ -92,5 +97,5 @@ namespace DemoBookApp.Api.Controllers
             }
             return NoContent();
         }
-    }   
+    }
 }

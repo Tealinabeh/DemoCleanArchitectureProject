@@ -4,7 +4,6 @@ using DemoBookApp.Contracts.Mappers;
 using DemoBookApp.Contracts.Requests;
 using DemoBookApp.Core;
 using DemoBookApp.Infrastructure.Interfaces;
-using DemoBookApp.Infrastructure.Persistence;
 
 namespace DemoBookApp.Application.Handlers
 {
