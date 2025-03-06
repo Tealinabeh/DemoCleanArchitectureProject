@@ -29,7 +29,7 @@ public static class DependencyInjection
     {
         service.AddDbContext<ApplicationDBContext>(options =>
         {
-            options.UseSqlite(configurations.GetConnectionString("Sqlite"));
+            options.UseSqlite(configurations.GetConnectionString("Database"));
         });
 
         return service;
