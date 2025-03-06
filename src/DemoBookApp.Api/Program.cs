@@ -2,6 +2,7 @@ using DemoBookApp.Infrastructure;
 using DemoBookApp.Application;
 using Scalar.AspNetCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi("v1", options =>

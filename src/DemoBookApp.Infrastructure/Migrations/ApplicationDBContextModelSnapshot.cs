@@ -87,6 +87,26 @@ namespace DemoBookApp.Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3f8a9c6e-5b74-4b8e-a123-1d5c9f6e7a8b",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "2e5b7c3d-4f1a-9d8e-6a2f-3b7c1e4d5a9f",
+                            Email = "admin@demoapp.com",
+                            EmailConfirmed = true,
+                            FavoriteAuthors = "[]",
+                            FavoriteBooks = "[]",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@DEMOAPP.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPkOEYBf3FFtpqJ6E/T+fXsa5fZkqs0P2Me6of4k6qTKJ/GTuXY5E4QIJ61g3aK7Eg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b1d4e8c2-7f6a-41d2-8e9c-3a6f7b4d2e1f",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("DemoBookApp.Core.Author", b =>
@@ -415,6 +435,13 @@ namespace DemoBookApp.Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "3f8a9c6e-5b74-4b8e-a123-1d5c9f6e7a8b",
+                            RoleId = "d3f7a8a9-2d1b-46e6-9cbb-4a7e916d2a60"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
