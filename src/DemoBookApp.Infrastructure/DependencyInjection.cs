@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using StackExchange.Redis;
 
 namespace DemoBookApp.Infrastructure;
 
@@ -19,7 +20,8 @@ public static class DependencyInjection
         service.AddPersistence(configurations)
                 .AddIdentity()
                 .AddJWTAuthentication(configurations)
-                .AddCustomAuthorization()
+                .AddAuthorization()
+                .AddCaching(configurations)
                 .AddRepositories();
 
         return service;
@@ -31,14 +33,30 @@ public static class DependencyInjection
         {
             options.UseSqlite(configurations.GetConnectionString("Database"));
         });
-
         return service;
+    }
+    private static IServiceCollection AddCaching(this IServiceCollection services, IConfiguration configurations)
+    {
+
+        services.AddSingleton<IConnectionMultiplexer>(sp =>
+        {
+            var configuration = configurations.GetConnectionString("Redis");
+            return ConnectionMultiplexer.Connect(configuration);
+        });
+
+        services.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = configurations.GetConnectionString("Redis");
+            options.InstanceName = "RedisInstance"; 
+        });
+
+        return services;
     }
 
     private static IServiceCollection AddRepositories(this IServiceCollection service)
     {
-        service.AddScoped<IBookRepository, BookRepository>();
-        service.AddScoped<IAuthorRepository, AuthorRepository>();
+        service.AddScoped<IBookRepository, BookCachedRepository>();
+        service.AddScoped<IAuthorRepository, AuthorCachedRepository>();
 
         return service;
     }
@@ -75,7 +93,7 @@ public static class DependencyInjection
 
         return service;
     }
-    private static IServiceCollection AddCustomAuthorization(this IServiceCollection service)
+    private static IServiceCollection AddAuthorization(this IServiceCollection service)
     {
         service.AddAuthorization(options =>
         {

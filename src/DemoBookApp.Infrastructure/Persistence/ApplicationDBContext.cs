@@ -83,13 +83,9 @@ namespace DemoBookApp.Infrastructure.Persistence
             var securityStamp = "b1d4e8c2-7f6a-41d2-8e9c-3a6f7b4d2e1f";
             var concurrencyStamp = "2e5b7c3d-4f1a-9d8e-6a2f-3b7c1e4d5a9f";
 
-#pragma warning disable CS0219 
-
             var password = "Supersecurepassword=123";
                               //Hardcoded from PasswordHasher<ApplicationUser>().HashPassword(null, "password")
             var passwordHash = "AQAAAAIAAYagAAAAEPkOEYBf3FFtpqJ6E/T+fXsa5fZkqs0P2Me6of4k6qTKJ/GTuXY5E4QIJ61g3aK7Eg==";
-
-#pragma warning restore CS0219 
 
             var adminUser = new ApplicationUser
             {

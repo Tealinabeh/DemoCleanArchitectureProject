@@ -12,7 +12,6 @@ namespace DemoBookApp.Api.Controllers
     [Authorize(Policy = "RequireAdminRole")]
     public class AuthorController : ControllerBase
     {
-        private const string StatusCode500Message = "An unexpected error occurred.";
         private readonly IAuthorHandler _persistence;
         public AuthorController(IAuthorHandler persistence)
         {
@@ -30,7 +29,7 @@ namespace DemoBookApp.Api.Controllers
                     QueryArgumentException => BadRequest(result.Exception.Message),
                     ArgumentException => NotFound(result.Exception.Message),
                     NullDatabaseEntityException => NotFound(result.Exception.Message),
-                    _ => StatusCode(500, StatusCode500Message)
+                    _ => StatusCode(500, result.Exception.Message)
                 };
             }
             return Ok(result.Value.Select(a => a.ToGetResponse()));
@@ -44,7 +43,7 @@ namespace DemoBookApp.Api.Controllers
                 return result.Exception switch
                 {
                     NullDatabaseEntityException => NotFound(result.Exception.Message),
-                    _ => StatusCode(500, StatusCode500Message)
+                    _ => StatusCode(500, result.Exception.Message)
                 };
             }
             return Ok(result.Value.ToGetResponse());
@@ -58,7 +57,7 @@ namespace DemoBookApp.Api.Controllers
                 return result.Exception switch
                 {
                     NullDatabaseEntityException => NotFound(result.Exception.Message),
-                    _ => StatusCode(500, StatusCode500Message)
+                    _ => StatusCode(500, result.Exception.Message)
                 };
             }
             return NoContent();
@@ -72,7 +71,7 @@ namespace DemoBookApp.Api.Controllers
                 return result.Exception switch
                 {
                     NullDatabaseEntityException => NotFound(result.Exception.Message),
-                    _ => StatusCode(500, StatusCode500Message)
+                    _ => StatusCode(500, result.Exception.Message)
                 };
             }
             return NoContent();
@@ -86,7 +85,7 @@ namespace DemoBookApp.Api.Controllers
                 return result.Exception switch
                 {
                     NullDatabaseEntityException => NotFound(result.Exception.Message),
-                    _ => StatusCode(500, StatusCode500Message)
+                    _ => StatusCode(500, result.Exception.Message)
                 };
             }
             return NoContent();
