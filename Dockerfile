@@ -16,6 +16,7 @@ RUN dotnet publish "DemoBookApp.Api.csproj" -c Release --no-restore -o /app/publ
 
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
+EXPOSE 7070
 EXPOSE 7071
 WORKDIR /app
 COPY --from=publish /app/publish .
