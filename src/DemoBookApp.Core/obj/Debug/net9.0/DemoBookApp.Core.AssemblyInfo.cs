@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DemoBookApp.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa77ff6cb4ae8312185965c32ac84a9e4ce139f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15a11cc86f6623928b96a70c20295510517f90fb")]
 [assembly: System.Reflection.AssemblyProductAttribute("DemoBookApp.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DemoBookApp.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
