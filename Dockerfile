@@ -1,4 +1,5 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+ENV ASPNETCORE_ENVIRONMENT=Development 
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /app
 COPY src/DemoBookApp.Api/DemoBookApp.Api.csproj DemoBookApp.Api/
@@ -11,9 +12,6 @@ RUN dotnet restore "DemoBookApp.Api/DemoBookApp.Api.csproj"
 COPY src/ ./
 WORKDIR /app/DemoBookApp.Api
 RUN dotnet build "DemoBookApp.Api.csproj" -c Release -o /app/build
-FROM build AS publish
-RUN dotnet publish "DemoBookApp.Api.csproj" -c Release --no-restore -o /app/publish
-
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 EXPOSE 7070

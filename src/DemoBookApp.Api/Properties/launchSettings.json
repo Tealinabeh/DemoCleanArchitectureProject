@@ -24,7 +24,8 @@
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/scalar/v1",
       "environmentVariables": {
         "ASPNETCORE_URLS": "https://+:7070;http://+:7071",
-        "ASPNETCORE_HTTPS_PORT": "7071"
+        "ASPNETCORE_HTTPS_PORT": "7071",
+        "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "httpPort": 7070,
       "useSSL": true,
